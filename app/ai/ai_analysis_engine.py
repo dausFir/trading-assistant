@@ -13,7 +13,9 @@ class AIAnalysisEngine:
 
     def __init__(self):
         """Initialize the AI analysis engine."""
-        self.openai_client = openai.AsyncOpenAI(api_key=settings.openai_api_key)
+        self.openai_client = None
+        if settings.openai_api_key:
+            self.openai_client = openai.AsyncOpenAI(api_key=settings.openai_api_key)
         self.groq_engine = GroqAnalysisEngine()
 
     async def analyze_setup(self, signal: Signal) -> Optional[AIAnalysisResult]:
@@ -29,7 +31,7 @@ class AIAnalysisEngine:
             return await self.groq_engine.analyze_setup(signal)
             
         # Default to OpenAI
-        if not settings.openai_api_key:
+        if not settings.openai_api_key or not self.openai_client:
             return self._generate_mock_analysis(signal)
         
         try:

@@ -12,7 +12,9 @@ class TelegramService:
 
     def __init__(self):
         """Initialize the Telegram service."""
-        self.bot = Bot(token=settings.telegram_bot_token)
+        self.bot = None
+        if settings.telegram_bot_token:
+            self.bot = Bot(token=settings.telegram_bot_token)
         self.chat_id = settings.telegram_chat_id
 
     async def send_alert(self, signal: Signal, analysis: AIAnalysisResult) -> bool:
@@ -25,7 +27,7 @@ class TelegramService:
         Returns:
             True if message sent successfully, False otherwise
         """
-        if not settings.telegram_bot_token or not settings.telegram_chat_id:
+        if not settings.telegram_bot_token or not settings.telegram_chat_id or not self.bot:
             # For development/testing, just print what would be sent
             print(self._format_message(signal, analysis))
             return True

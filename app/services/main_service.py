@@ -44,7 +44,7 @@ class TradingAssistant:
     def _setup_collectors(self):
         """Setup data collectors based on enabled markets."""
         # Crypto collector
-        if "crypto" in settings.enabled_markets:
+        if "crypto" in settings.markets_list:
             self.collectors["binance"] = BinanceCollector(
                 symbols=["BTCUSDT", "ETHUSDT"],
                 intervals=["1m", "5m", "15m"]
@@ -52,12 +52,12 @@ class TradingAssistant:
             self.logger.info("Binance collector enabled for crypto")
 
         # IHSG collector
-        if "ihsg" in settings.enabled_markets:
+        if "ihsg" in settings.markets_list:
             self.collectors["ihsg"] = IHSGCollector()
             self.logger.info("IHSG collector enabled")
 
         # US Stocks collector
-        if "us" in settings.enabled_markets:
+        if "us" in settings.markets_list:
             self.collectors["us_stocks"] = USStockCollector()
             self.logger.info("US Stocks collector enabled")
 
