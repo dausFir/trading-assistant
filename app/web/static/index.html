@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Assistant Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Trading Assistant</h1>
+            <p class="subtitle">Multi-Market Realtime Analysis & Alerts</p>
+        </header>
+        
+        <div class="market-tabs">
+            <button class="tab active" data-market="crypto">Crypto</button>
+            <button class="tab" data-market="ihsg">IHSG</button>
+            <button class="tab" data-market="us">US Stocks</button>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-label">Status:</span>
+                <span class="status-value" id="connection-status">Connecting...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">AI Provider:</span>
+                <span class="status-value" id="ai-provider">OpenAI</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Uptime:</span>
+                <span class="status-value" id="uptime">00:00:00</span>
+            </div>
+        </div>
+        
+        <main>
+            <section class="prices">
+                <h2>💰 Live Prices</h2>
+                <div class="price-grid" id="price-grid">
+                    <!-- Prices will be populated here -->
+                </div>
+            </section>
+            
+            <section class="signals">
+                <h2>📡 Recent Signals</h2>
+                <div class="signals-container" id="signals-container">
+                    <!-- Signals will be populated here -->
+                    <div class="empty-state">Waiting for signals...</div>
+                </div>
+            </section>
+            
+            <section class="analysis">
+                <h2>🧠 Latest AI Analysis</h2>
+                <div class="analysis-card" id="analysis-card">
+                    <div class="empty-state">No analysis yet</div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>AI Trading Assistant v0.1.0 • Multi-Market Support • Powered by FastAPI</p>
+        </footer>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
