@@ -1,0 +1,24 @@
+[project]
+name = "trading-assistant"
+version = "0.1.0"
+description = "AI Trading Assistant"
+authors = [{name = "Antigravity", email = "antigravity@example.com"}]
+dependencies = [
+    "asyncio",
+    "websockets",
+    "pandas",
+    "ta",
+    "openai",
+    "python-telegram-bot",
+    "fastapi",
+    "uvicorn[standard]",
+    "yfinance",
+    "groq",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
